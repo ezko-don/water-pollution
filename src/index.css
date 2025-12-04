@@ -1,0 +1,354 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 210 100% 97%;
+    --foreground: 210 50% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 50% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 50% 10%;
+
+    --primary: 200 90% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 180 70% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 210 20% 50%;
+
+    --accent: 140 60% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 30% 85%;
+    --input: 210 30% 85%;
+    --ring: 200 90% 35%;
+
+    --radius: 0.75rem;
+
+    /* Water-themed custom colors */
+    --ocean-deep: 210 85% 25%;
+    --ocean-medium: 200 90% 35%;
+    --water-teal: 180 70% 45%;
+    --water-light: 190 60% 85%;
+    --nature-green: 140 60% 50%;
+    --nature-light: 140 40% 85%;
+    --warning-pollution: 25 85% 55%;
+    
+    /* Gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(210 85% 25%), hsl(200 90% 35%));
+    --gradient-water: linear-gradient(135deg, hsl(180 70% 45%), hsl(190 80% 60%));
+    --gradient-nature: linear-gradient(135deg, hsl(140 60% 50%), hsl(160 50% 55%));
+    
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    /* Shadows and effects */
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.2);
+  }
+
+  .dark {
+    --background: 210 50% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 210 45% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 210 45% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 200 90% 50%;
+    --primary-foreground: 210 50% 10%;
+
+    --secondary: 180 70% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 15%;
+    --muted-foreground: 210 30% 65%;
+
+    --accent: 140 60% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 40% 20%;
+    --input: 210 40% 20%;
+    --ring: 200 90% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ===============================================
+   ADVANCED ANIMATIONS FOR MULTIMEDIA PRESENTATION
+   =============================================== */
+
+@layer utilities {
+  /* Fade Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  /* Slide Animations */
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 1s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 1s ease-out forwards;
+  }
+
+  /* Zoom Animations */
+  @keyframes zoomIn {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes zoomInImage {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.05);
+    }
+  }
+
+  .animate-zoom-in {
+    animation: zoomIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .animate-zoom-in-image:hover {
+    animation: zoomInImage 0.4s ease forwards;
+  }
+
+  /* Float Animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Ripple Animation */
+  @keyframes ripple {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+
+  .animate-ripple {
+    animation: ripple 1.5s ease-out infinite;
+  }
+
+  /* Pulse Animations */
+  @keyframes pulseSlow {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulseSlow 3s ease-in-out infinite;
+  }
+
+  /* Bounce Animation */
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .animate-bounce-subtle {
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  /* Shimmer/Loading Animation */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  /* Rotate Animation */
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-rotate {
+    animation: rotate 3s linear infinite;
+  }
+
+  /* Wave Animation */
+  @keyframes wave {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(10deg);
+    }
+    75% {
+      transform: rotate(-10deg);
+    }
+  }
+
+  .animate-wave {
+    animation: wave 2s ease-in-out infinite;
+  }
+
+  /* Glow Animation */
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+    }
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  /* Backdrop Blur Entrance */
+  @keyframes backdropBlur {
+    from {
+      backdrop-filter: blur(0px);
+    }
+    to {
+      backdrop-filter: blur(10px);
+    }
+  }
+
+  .animate-backdrop-blur {
+    animation: backdropBlur 0.3s ease forwards;
+  }
+
+  /* Gradient Shift Animation */
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient-shift {
+    background-size: 200% 200%;
+    animation: gradientShift 5s ease infinite;
+  }
+}
